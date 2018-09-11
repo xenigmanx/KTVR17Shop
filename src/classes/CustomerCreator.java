@@ -22,7 +22,7 @@ public class CustomerCreator {
         customer.setName(scanner.nextLine());
         System.out.println("Фамилия: ");
         customer.setSurname(scanner.nextLine());
-        System.out.println("Личный код: ");
+        System.out.println("Деньги: ");
         customer.setMoney(scanner.nextInt());
         return customer;
         

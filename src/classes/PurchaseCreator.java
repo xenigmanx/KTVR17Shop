@@ -37,16 +37,16 @@ public class PurchaseCreator {
                     +" "+customers.get(i).getSurname()
                     +": "+customers.get(i).getMoney());
         }
-        System.out.println("Выберите номер продукта: ");
-        int numberProduct=scanner.nextInt();
-        Product product=products.get(numberProduct-1);
-        System.out.println("Выберите номер клиента: ");
-        int numberCustomer=scanner.nextInt();
-        Customer customer=customers.get(numberCustomer-1);
-         System.out.println("Количество: ");
-        int quantity=scanner.nextInt();
+        System.out.println("Выберите название продукта: ");
+        int numberProduct = scanner.nextInt();
+        Product product = products.get(numberProduct - 1);
+        System.out.println("Выберите имя клиента: ");
+        int numberCustomer = scanner.nextInt();
+        Customer customer = customers.get(numberCustomer - 1);
+        System.out.println("Количество: ");
+        int quantity = scanner.nextInt();
         Calendar c = new GregorianCalendar();
-        Purchase purchase=new Purchase(null,product,customer,c.getTime(),quantity);
+        Purchase purchase = new Purchase(null, product, customer, c.getTime(), quantity);
         return purchase;
-        
-}}
+    }}
+
