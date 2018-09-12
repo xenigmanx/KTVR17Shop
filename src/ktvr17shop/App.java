@@ -5,6 +5,8 @@
  */
 package ktvr17shop;
 
+import Interface.ConsoleInterface;
+import Interface.Manageable;
 import classes.CustomerCreator;
 import classes.ProductCreator;
 import classes.PurchaseCreator;
@@ -21,44 +23,40 @@ import java.util.Scanner;
  */
 public class App {
 
-   private List <Product> products= new ArrayList <>();
-   private List <Customer>customers= new ArrayList <>();
-     private List <Purchase>purchases= new ArrayList <>();
-     
-       public void run(){
-           String repeat = "r";
-           Scanner scanner = new Scanner(System.in);
-           int task;
-           do {
-               System.out.println("  - Выберите действие -");
-               System.out.println("0 - Выход из программы -");
-               System.out.println("1 - Добавить продукт -");
-               System.out.println("2 - Добавить нового клиента-");
-               System.out.println("3 - Покупка -");
+    private List<Product> products = new ArrayList<>();
+    private List<Customer> customers = new ArrayList<>();
+    private List<Purchase> purchases = new ArrayList<>();
+    private Manageable manager = new ConsoleInterface();
 
-               task = scanner.nextInt();
-               switch (task) {
-                   case 0:
-                        repeat = "r";
-                        break;
-                   case 1:
-                        ProductCreator productCreator= new ProductCreator();
-                        this.products.add(productCreator.returnNewProduct());
-                        break;
-                    case 2:
-                        CustomerCreator customerCreator = new CustomerCreator();
-                        this.customers.add(customerCreator.returnNewCustomer());
-                        break;
-                    case 3:
-                        PurchaseCreator  purchaseCreator = new PurchaseCreator();
-                        this.purchases.add(purchaseCreator.returnNewPurchase(products, customers));
-                        break;  
-                    default:
-                         System.out.println("Выберите одно из действий!");
-                }
-        }while("r".equals(repeat));
- 
+    public void run() {
+        String repeat = "r";
+        Scanner scanner = new Scanner(System.in);
+        int task;
+        do {
+            System.out.println("  - Выберите действие -");
+            System.out.println("0 - Выход из программы -");
+            System.out.println("1 - Добавить продукт -");
+            System.out.println("2 - Добавить нового клиента-");
+            System.out.println("3 - Покупка -");
+
+            task = scanner.nextInt();
+            switch (task) {
+                case 0:
+                    repeat = "r";
+                    break;
+                case 1:
+                    this.products.add(manager.createProduct());
+                    break;
+                case 2:
+                    this.customers.add(manager.createCustomer());
+                    break;
+                case 3:
+                    this.purchases.add(manager.createPurchase(products, customers));
+                    break;
+                default:
+                    System.out.println("Выберите одно из действий!");
+            }
+        } while ("r".equals(repeat));
+
     }
 }
-
-
