@@ -34,12 +34,4 @@ public class ConsoleInterface implements Manageable{
         return purchaseCreator.returnNewPurchase(products, customers);
     }
 
-    
-
-   
-
-    
-   
-   
-
 }

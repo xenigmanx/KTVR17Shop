@@ -21,32 +21,33 @@ public class PurchaseCreator {
     public Purchase returnNewPurchase(List<Product>products,List<Customer>customers){
         System.out.println("-----------Покупка------------");
         Scanner scanner = new Scanner(System.in);
-         System.out.println("Список продуктов: ");
+         System.out.println("Список всех продуктов: ");
          int countProducts=products.size();
         for (int i = 0; i < countProducts; i++) {
 
             System.out.println(i+1+". "+products.get(i).getName()
                     +" "+products.get(i).getCount()
-                    +": "+products.get(i).getPrice());
+                    +":штук "+products.get(i).getPrice()+":evro ");
         }
-        System.out.println("Список клиентов: ");
+        System.out.println("Список всех клиентов: ");
          int countCustomers=customers.size();
         for (int i = 0; i < countCustomers; i++) {
 
             System.out.println(i+1+". "+customers.get(i).getName()
                     +" "+customers.get(i).getSurname()
-                    +": "+customers.get(i).getMoney());
+                    +" заплатил evro "+customers.get(i).getMoney());
         }
-        System.out.println("Выберите название продукта: ");
+        System.out.println("Выход ");
         int numberProduct = scanner.nextInt();
         Product product = products.get(numberProduct - 1);
         System.out.println("Выберите имя клиента: ");
         int numberCustomer = scanner.nextInt();
         Customer customer = customers.get(numberCustomer - 1);
-        System.out.println("Количество: ");
+        System.out.println("Количество шт: ");
         int quantity = scanner.nextInt();
         Calendar c = new GregorianCalendar();
         Purchase purchase = new Purchase(null, product, customer, c.getTime(), quantity);
         return purchase;
-    }}
+    }
+}
 
