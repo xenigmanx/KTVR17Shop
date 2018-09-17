@@ -7,7 +7,9 @@ package ktvr17shop;
 
 import Interface.ConsoleInterface;
 import Interface.Manageable;
+import Interface.Retentive;
 import classes.CustomerCreator;
+import classes.PersistToDatabase;
 import classes.ProductCreator;
 import classes.PurchaseCreator;
 import entity.Customer;
@@ -27,7 +29,8 @@ public class App {
     private List<Customer> customers = new ArrayList<>();
     private List<Purchase> purchases = new ArrayList<>();
     private Manageable manager = new ConsoleInterface();
-
+    private Retentive saver = new PersistToDatabase();
+            
     public void run() {
         String repeat = "r";
         Scanner scanner = new Scanner(System.in);
