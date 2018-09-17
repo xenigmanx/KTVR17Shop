@@ -7,16 +7,31 @@ package entity;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author pupil
  */
+@Entity 
 public class Purchase {
+     @Id 
+     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
+     @OneToOne(cascade = CascadeType.MERGE,orphanRemoval = true) 
     private Product product;
+     @OneToOne(cascade = CascadeType.MERGE,orphanRemoval = true) 
     private Customer customer;
+     @Temporal(TemporalType.TIMESTAMP) 
     private Date date;
+     @Temporal(TemporalType.TIMESTAMP) 
     private Integer quantity;
 
 public Purchase() {
