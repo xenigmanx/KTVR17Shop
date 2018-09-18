@@ -21,4 +21,5 @@ public List<Product> loadProduct();
 public List<Customer> loadCustomer(); 
 public List<Purchase> loadPurchase(); 
 public void freeResources();    
+
 }

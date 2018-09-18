@@ -37,7 +37,7 @@ public class PurchaseCreator {
                     +" "+customers.get(i).getSurname()
                     +" заплатил evro "+customers.get(i).getMoney());
         }
-        System.out.println("Выход ");
+        System.out.println("клиенты и товар ");
         int numberProduct = scanner.nextInt();
         Product product = products.get(numberProduct - 1);
         System.out.println("Выберите имя клиента: ");

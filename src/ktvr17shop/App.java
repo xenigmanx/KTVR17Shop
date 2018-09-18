@@ -5,13 +5,8 @@
  */
 package ktvr17shop;
 
-import Interface.ConsoleInterface;
 import Interface.Manageable;
 import Interface.Retentive;
-import classes.CustomerCreator;
-import classes.PersistToDatabase;
-import classes.ProductCreator;
-import classes.PurchaseCreator;
 import entity.Customer;
 import entity.Product;
 import entity.Purchase;
@@ -30,7 +25,11 @@ public class App {
     private List<Purchase> purchases = new ArrayList<>();
     private Manageable manager = new ConsoleInterface();
     private Retentive saver = new PersistToDatabase();
-            
+    public App(){
+        this.products = saver.loadProduct();
+        this.customers = saver.loadCustomer();
+        this.purchases = saver.loadPurchase();
+    }        
     public void run() {
         String repeat = "r";
         Scanner scanner = new Scanner(System.in);
@@ -48,13 +47,25 @@ public class App {
                     repeat = "r";
                     break;
                 case 1:
-                    this.products.add(manager.createProduct());
+                    Product product=manager.createProduct();
+                    if(product != null){
+                        products.add(product);
+                        saver.saveProduct(product);
+                    }
                     break;
                 case 2:
-                    this.customers.add(manager.createCustomer());
+                    Customer customer=manager.createCustomer();
+                    if(customer != null){
+                        customers.add(customer);
+                        saver.saveCuctomer(customer);
+                    }
                     break;
                 case 3:
-                    this.purchases.add(manager.createPurchase(products, customers));
+                    Purchase purchase=manager.createPurchase(products, customers);
+                    if(purchase != null){
+                        purchases.add(purchase);
+                        saver.savePurchase(purchase, false);
+                    }
                     break;
                 default:
                     System.out.println("Выберите одно из действий!");

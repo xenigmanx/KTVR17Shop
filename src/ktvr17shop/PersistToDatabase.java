@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package classes;
+package ktvr17shop;
 
 import Interface.Retentive;
 import entity.Customer;
@@ -59,7 +59,7 @@ private final EntityTransaction tx;
     @Override
     public List<Product> loadProduct() {
         try{
-            return em.createQuery("select p from product p ").getResultList();
+            return em.createQuery("SELECT p FROM Product p").getResultList();
         }catch(Exception e){
             return new ArrayList<Product>();
         }
@@ -68,7 +68,7 @@ private final EntityTransaction tx;
     @Override
     public List<Customer> loadCustomer() {
         try{
-            return em.createQuery("select c from product c ").getResultList();
+            return em.createQuery("SELECT c FROM Customer c").getResultList();
         }catch(Exception e){
             return new ArrayList<Customer>();
         }
@@ -77,7 +77,7 @@ private final EntityTransaction tx;
     @Override
     public List<Purchase> loadPurchase() {
         try{
-            return em.createQuery("select h from product h ").getResultList();
+            return em.createQuery("SELECT p FROM Purchase p ").getResultList();
         }catch(Exception e){
             return new ArrayList<Purchase>();
         }    
@@ -87,5 +87,7 @@ private final EntityTransaction tx;
     public void freeResources() {
         if (em !=null)em.close();
     }
+
+   
 
 }

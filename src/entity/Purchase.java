@@ -31,7 +31,6 @@ public class Purchase {
     private Customer customer;
      @Temporal(TemporalType.TIMESTAMP) 
     private Date date;
-     @Temporal(TemporalType.TIMESTAMP) 
     private Integer quantity;
 
 public Purchase() {
