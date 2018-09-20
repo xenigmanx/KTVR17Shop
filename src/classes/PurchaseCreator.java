@@ -37,16 +37,19 @@ public class PurchaseCreator {
                     +" "+customers.get(i).getSurname()
                     +" заплатил evro "+customers.get(i).getMoney());
         }
-        System.out.println("клиенты и товар ");
+        System.out.println("vibor no producta ");
         int numberProduct = scanner.nextInt();
         Product product = products.get(numberProduct - 1);
         System.out.println("Выберите имя клиента: ");
         int numberCustomer = scanner.nextInt();
         Customer customer = customers.get(numberCustomer - 1);
-        System.out.println("Количество шт: ");
+        System.out.println("Количество tovara шт: ");
         int quantity = scanner.nextInt();
         Calendar c = new GregorianCalendar();
         Purchase purchase = new Purchase(null, product, customer, c.getTime(), quantity);
+        purchase.getProduct().setCount(purchase.getProduct().getCount()-quantity);
+        purchase.getCustomer().setMoney(purchase.getCustomer().getMoney()-purchase.getProduct().getPrice()*quantity);
+        if(purchase.getCustomer().getMoney()-purchase.getProduct().getPrice()*quantity<0){return null;}
         return purchase;
     }
 }
