@@ -44,7 +44,7 @@ public class App {
             task = scanner.nextInt();
             switch (task) {
                 case 0:
-                    repeat = "r";
+                    repeat = "n";
                     break;
                 case 1:
                     Product product=manager.createProduct();

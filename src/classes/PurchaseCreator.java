@@ -37,7 +37,7 @@ public class PurchaseCreator {
                     +" "+customers.get(i).getSurname()
                     +" заплатил evro "+customers.get(i).getMoney());
         }
-        System.out.println("vibor no producta ");
+        System.out.println("Выбор продукта ");
         int numberProduct = scanner.nextInt();
         Product product = products.get(numberProduct - 1);
         System.out.println("Выберите имя клиента: ");
@@ -47,9 +47,18 @@ public class PurchaseCreator {
         int quantity = scanner.nextInt();
         Calendar c = new GregorianCalendar();
         Purchase purchase = new Purchase(null, product, customer, c.getTime(), quantity);
+        
         purchase.getProduct().setCount(purchase.getProduct().getCount()-quantity);
+        if (purchase.getProduct().getCount() < 0) {
+            System.out.println("Не хватает товара");
+            return null;
+        }
+       
         purchase.getCustomer().setMoney(purchase.getCustomer().getMoney()-purchase.getProduct().getPrice()*quantity);
-        if(purchase.getCustomer().getMoney()-purchase.getProduct().getPrice()*quantity<0){return null;}
+        if (purchase.getCustomer().getMoney() < 0) {
+            System.out.println("Не хватает денег");
+            return null;
+        }
         return purchase;
     }
 }
