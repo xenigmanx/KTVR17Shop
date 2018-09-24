@@ -26,7 +26,18 @@ public class ProductCreator {
         product.setPrice(scanner.nextInt());
         System.out.println("---Количество продукта в штуках---");
         product.setCount(scanner.nextInt());
+        System.out.println(products.toString());
+        System.out.println("Для добавления введите символ \"y\".\nДля отмены наберите -1");
+        String yes;
+        yes = scanner.next();
+        if("-1".equals(yes)){
+            System.out.println("-----не добавлен----");
+            return null;
+        }
+        System.out.println("----- добавлен----");
         return  product;
                 
-    }
+    
 }
+}
+        

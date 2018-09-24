@@ -24,6 +24,14 @@ public class CustomerCreator {
         customer.setSurname(scanner.nextLine());
         System.out.println("Деньги: ");
         customer.setMoney(scanner.nextInt());
+        System.out.println("Для добавления введите символ \"y\".\nДля отмены наберите -1");
+        String yes;
+        yes = scanner.next();
+        if("-1".equals(yes)){
+            System.out.println("-----не добавлен----");
+            return null;
+        }
+        System.out.println("----- добавлен----");
         return customer;
         
     }
